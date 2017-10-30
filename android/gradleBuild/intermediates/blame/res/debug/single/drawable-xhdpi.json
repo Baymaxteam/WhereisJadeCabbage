@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/sam/Desktop/android_tensorflow/tensorflow/tensorflow/examples/android/gradleBuild/intermediates/res/merged/debug/drawable-xhdpi/ic_action_info.png",
+        "source": "/Users/sam/Desktop/android_tensorflow/tensorflow/tensorflow/examples/android/res/drawable-xhdpi/ic_action_info.png"
+    },
+    {
+        "merged": "/Users/sam/Desktop/android_tensorflow/tensorflow/tensorflow/examples/android/gradleBuild/intermediates/res/merged/debug/drawable-xhdpi/ic_launcher.png",
+        "source": "/Users/sam/Desktop/android_tensorflow/tensorflow/tensorflow/examples/android/res/drawable-xhdpi/ic_launcher.png"
+    }
+]

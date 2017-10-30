@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/Users/sam/Desktop/android_tensorflow/tensorflow/tensorflow/examples/android/gradleBuild/intermediates/res/merged/debug/layout/activity_speech.xml",
+        "source": "/Users/sam/Desktop/android_tensorflow/tensorflow/tensorflow/examples/android/res/layout/activity_speech.xml"
+    },
+    {
+        "merged": "/Users/sam/Desktop/android_tensorflow/tensorflow/tensorflow/examples/android/gradleBuild/intermediates/res/merged/debug/layout/activity_camera.xml",
+        "source": "/Users/sam/Desktop/android_tensorflow/tensorflow/tensorflow/examples/android/res/layout/activity_camera.xml"
+    },
+    {
+        "merged": "/Users/sam/Desktop/android_tensorflow/tensorflow/tensorflow/examples/android/gradleBuild/intermediates/res/merged/debug/layout/camera_connection_fragment_stylize.xml",
+        "source": "/Users/sam/Desktop/android_tensorflow/tensorflow/tensorflow/examples/android/res/layout/camera_connection_fragment_stylize.xml"
+    },
+    {
+        "merged": "/Users/sam/Desktop/android_tensorflow/tensorflow/tensorflow/examples/android/gradleBuild/intermediates/res/merged/debug/layout/camera_connection_fragment_tracking.xml",
+        "source": "/Users/sam/Desktop/android_tensorflow/tensorflow/tensorflow/examples/android/res/layout/camera_connection_fragment_tracking.xml"
+    },
+    {
+        "merged": "/Users/sam/Desktop/android_tensorflow/tensorflow/tensorflow/examples/android/gradleBuild/intermediates/res/merged/debug/layout/list_text_item.xml",
+        "source": "/Users/sam/Desktop/android_tensorflow/tensorflow/tensorflow/examples/android/res/layout/list_text_item.xml"
+    },
+    {
+        "merged": "/Users/sam/Desktop/android_tensorflow/tensorflow/tensorflow/examples/android/gradleBuild/intermediates/res/merged/debug/layout/camera_connection_fragment.xml",
+        "source": "/Users/sam/Desktop/android_tensorflow/tensorflow/tensorflow/examples/android/res/layout/camera_connection_fragment.xml"
+    }
+]
