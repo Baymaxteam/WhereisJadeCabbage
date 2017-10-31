@@ -9,16 +9,16 @@ Retraining Model (mobilenet 0.25)
 python tensorflow/examples/image_retraining/retrain.py \
     --image_dir /Users/sam/Desktop/dataset/ \
     --learning_rate=0.0001 \
-    --testing_percentage=20 \
-    --validation_percentage=20 \
+    --testing_percentage=10 \
+    --validation_percentage=10 \
     --train_batch_size=32 \
     --validation_batch_size=-1 \
     --flip_left_right True \
     --random_scale=30 \
     --random_brightness=30 \
-    --eval_step_interval=100 \
-    --how_many_training_steps=600 \
-    --architecture mobilenet_0.25_128
+    --eval_step_interval=10 \
+    --how_many_training_steps=150 \
+    --architecture mobilenet_0.25_224
 ```
 
 Validate Result
@@ -29,6 +29,6 @@ python tensorflow/examples/label_image/label_image.py --graph /tmp/output_graph.
     --output_layer=final_result \
     --input_mean=128 \
     --input_std=128 \
-    --input_width=128 \
-    --input_height=128
+    --input_width=224 \
+    --input_height=224
 ```
