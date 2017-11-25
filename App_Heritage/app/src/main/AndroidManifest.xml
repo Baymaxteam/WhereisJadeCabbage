@@ -28,6 +28,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="qwedsazxc78.app_heritage.MainActivity" />
         </activity>
+        <activity
+            android:name=".introDetailActivity"
+            android:label="@string/title_activity_intro_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
