@@ -1,5 +1,6 @@
 package qwedsazxc78.app_heritage;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,19 +18,53 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
+    // Array of strings for ListView Title
+    String[] listviewTitle = new String[]{
+            "翠玉白菜",
+    };
+
+
+    int[] listviewImage = new int[]{
+            R.drawable.jade_cabbage,
+    };
+
+    String[] listviewShortDescription = new String[]{
+            "翠玉屬輝玉類,產於雲南至緬甸的山區,其赭紅色者俗稱作「翡」,翠綠色者俗稱作「翠」。\n\n" +
+                    "此件「翠玉白菜」原陳設於永和宮,但種在一個海棠花形小琺瑯盆裡,其旁尚搭配紅色珊瑚靈芝。" +
+                    "其原為一塊半灰白半翠綠的輝玉,玉匠巧妙地利用玉質本來的顏色," +
+                    "雕成一顆筋脈分明、栩栩如生的白菜,其上則雕刻螽斯和蝗蟲。\n\n" +
+                    "螽斯也就是俗稱的「紡織娘」," +
+                    "紡織娘因為繁殖力很強,在古代是被當做多子多孫的吉祥象徵。\n\n" +
+                    "《詩經.周南》即言:「螽斯羽詵詵兮,宜爾子孫振振兮。」\n\n",
+
+    };
+
+    int detect_index = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setTitle("文物辨識");
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        final Context context_detect = this;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+                Intent Intent_detect = new Intent( context_detect ,introDetailActivity.class);
+                Intent_detect.putExtra("title", listviewTitle[detect_index]);
+                Intent_detect.putExtra("image", listviewImage[detect_index]);
+                Intent_detect.putExtra("description", listviewShortDescription[detect_index]);
+                startActivity(Intent_detect);
             }
         });
 
