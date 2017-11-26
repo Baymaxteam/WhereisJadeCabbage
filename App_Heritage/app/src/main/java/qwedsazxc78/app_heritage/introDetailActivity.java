@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,7 +14,8 @@ import android.widget.Toast;
 public class introDetailActivity extends AppCompatActivity {
 
     private ImageView showImage;
-    private TextView showDescription;
+    private TextView  showDescription;
+    private Button    clickSpeech;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,15 +23,6 @@ public class introDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_intro_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
 
         String title        = this.getIntent().getExtras().getString("title");
@@ -43,12 +36,19 @@ public class introDetailActivity extends AppCompatActivity {
 
         showImage = (ImageView) findViewById(R.id.introDetail_image);
         showImage.setImageResource(image);
-        // showDescription.setText(Description);
+
+//        clickSpeech = (Button) findViewById(R.id.introDetail_Speech);
+//        clickSpeech.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                // Do something in response to button click
+//            }
+//        });
 
 
-        // Toast.makeText(getApplicationContext(), "Send Image " + image, Toast.LENGTH_LONG).show();
-//        showImage.setImageDrawable((imageview)findViewById(image));
+    }
 
-
+    /** Called when the user touches the button */
+    public void speechMessage(View view) {
+        // Do something in response to button click
     }
 }
