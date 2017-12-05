@@ -8,52 +8,9 @@
     tools:context="qwedsazxc78.app_heritage.introDetailActivity"
     tools:showIn="@layout/activity_intro_detail">
 
-    <LinearLayout
+
+    <ListView
+        android:id="@+id/listview_introdetail"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/introDetail_image"
-            android:layout_width="match_parent"
-            android:layout_height="228dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            app:srcCompat="@drawable/ic_menu_manage" />
-
-
-        <Button
-            android:id="@+id/introDetail_Speech"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="48dp"
-            android:layout_marginRight="48dp"
-            android:layout_marginTop="8dp"
-            android:drawableLeft="@drawable/ic_menu_slideshow_grey"
-            android:elevation="0dp"
-            android:onClick="speechMessage"
-            android:text="@string/button_speech"
-            android:textAlignment="center"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:theme="@style/PrimaryButton" />
-
-
-        <TextView
-            android:id="@+id/introDetail_Description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/app_name"
-            android:textAlignment="textStart"
-            android:textSize="18sp" />
-
-
-    </LinearLayout>
-
-
-
+        android:layout_height="wrap_content" />
 </android.support.v4.widget.NestedScrollView>

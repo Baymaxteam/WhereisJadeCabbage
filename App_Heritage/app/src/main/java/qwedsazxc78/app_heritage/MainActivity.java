@@ -225,7 +225,6 @@ public class MainActivity extends CameraActivity
             "翠玉白菜",
     };
 
-
     int[] listviewImage = new int[]{
             R.drawable.jade_cabbage,
     };
@@ -300,7 +299,6 @@ public class MainActivity extends CameraActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("文物辨識");
-
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         final Context context_detect = this;

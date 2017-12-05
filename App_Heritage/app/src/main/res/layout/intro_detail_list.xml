@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <ImageView
+        android:id="@+id/introDetail_image"
+        android:layout_width="match_parent"
+        android:layout_height="228dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_menu_manage" />
+
+    <Button
+        android:id="@+id/introDetail_Speech"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="48dp"
+        android:layout_marginTop="8dp"
+        android:drawableStart="@drawable/ic_menu_slideshow_grey"
+        android:onClick="speechMessage"
+        android:text="@string/button_speech"
+        android:textAlignment="center"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:theme="@style/PrimaryButton" />
+
+    <TextView
+        android:id="@+id/introDetail_Description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/app_name"
+        android:textAlignment="textStart"
+        android:textSize="18sp" />
+
+</LinearLayout>
