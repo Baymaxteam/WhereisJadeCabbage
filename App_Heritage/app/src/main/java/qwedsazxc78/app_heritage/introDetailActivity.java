@@ -52,7 +52,7 @@ public class introDetailActivity extends AppCompatActivity {
         ListView androidListView = (ListView) findViewById(R.id.listview_introdetail);
         androidListView.setAdapter(simpleAdapter);
 
-        // text to speech
+        // text to speech function
         TTSObj = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
@@ -91,6 +91,7 @@ public class introDetailActivity extends AppCompatActivity {
     }
 
     /** Called when the user touches the button */
+    // start speech the introduction text
     public void speechMessage(View view) {
         // Toast.makeText(getApplicationContext(), "開啟語音導覽", Toast.LENGTH_LONG).show();
         TTSObj.speak(Description, TextToSpeech.QUEUE_FLUSH, null);
