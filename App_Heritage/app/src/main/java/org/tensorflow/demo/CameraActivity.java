@@ -35,6 +35,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Trace;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Size;
 import android.view.KeyEvent;
 import android.view.WindowManager;
@@ -44,7 +45,7 @@ import org.tensorflow.demo.env.ImageUtils;
 import org.tensorflow.demo.env.Logger;
 import qwedsazxc78.app_heritage.R;
 
-public abstract class CameraActivity extends Activity
+public abstract class CameraActivity extends AppCompatActivity
     implements OnImageAvailableListener, Camera.PreviewCallback {
   private static final Logger LOGGER = new Logger();
 
@@ -69,20 +70,20 @@ public abstract class CameraActivity extends Activity
   private Runnable postInferenceCallback;
   private Runnable imageConverter;
 
-  @Override
-  protected void onCreate(final Bundle savedInstanceState) {
-    LOGGER.d("onCreate " + this);
-    super.onCreate(null);
-    getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
-    setContentView(R.layout.activity_main);
-
-    if (hasPermission()) {
-      setFragment();
-    } else {
-      requestPermission();
-    }
-  }
+//  @Override
+//  protected void onCreate(final Bundle savedInstanceState) {
+//    LOGGER.d("onCreate " + this);
+//    super.onCreate(null);
+//    getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+//
+//    setContentView(R.layout.activity_main);
+//
+//    if (hasPermission()) {
+//      setFragment();
+//    } else {
+//      requestPermission();
+//    }
+//  }
 
   private byte[] lastPreviewFrame;
 
@@ -268,39 +269,39 @@ public abstract class CameraActivity extends Activity
     }
   }
 
-  @Override
-  public void onRequestPermissionsResult(
-      final int requestCode, final String[] permissions, final int[] grantResults) {
-    if (requestCode == PERMISSIONS_REQUEST) {
-      if (grantResults.length > 0
-          && grantResults[0] == PackageManager.PERMISSION_GRANTED
-          && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-        setFragment();
-      } else {
-        requestPermission();
-      }
-    }
-  }
+//  @Override
+//  public void onRequestPermissionsResult(
+//      final int requestCode, final String[] permissions, final int[] grantResults) {
+//    if (requestCode == PERMISSIONS_REQUEST) {
+//      if (grantResults.length > 0
+//          && grantResults[0] == PackageManager.PERMISSION_GRANTED
+//          && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+//        setFragment();
+//      } else {
+//        requestPermission();
+//      }
+//    }
+//  }
 
-  private boolean hasPermission() {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-      return checkSelfPermission(PERMISSION_CAMERA) == PackageManager.PERMISSION_GRANTED &&
-          checkSelfPermission(PERMISSION_STORAGE) == PackageManager.PERMISSION_GRANTED;
-    } else {
-      return true;
-    }
-  }
-
-  private void requestPermission() {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-      if (shouldShowRequestPermissionRationale(PERMISSION_CAMERA) ||
-          shouldShowRequestPermissionRationale(PERMISSION_STORAGE)) {
-        Toast.makeText(CameraActivity.this,
-            "Camera AND storage permission are required for this demo", Toast.LENGTH_LONG).show();
-      }
-      requestPermissions(new String[] {PERMISSION_CAMERA, PERMISSION_STORAGE}, PERMISSIONS_REQUEST);
-    }
-  }
+//  private boolean hasPermission() {
+//    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//      return checkSelfPermission(PERMISSION_CAMERA) == PackageManager.PERMISSION_GRANTED &&
+//          checkSelfPermission(PERMISSION_STORAGE) == PackageManager.PERMISSION_GRANTED;
+//    } else {
+//      return true;
+//    }
+//  }
+//
+//  private void requestPermission() {
+//    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//      if (shouldShowRequestPermissionRationale(PERMISSION_CAMERA) ||
+//          shouldShowRequestPermissionRationale(PERMISSION_STORAGE)) {
+//        Toast.makeText(CameraActivity.this,
+//            "Camera AND storage permission are required for this demo", Toast.LENGTH_LONG).show();
+//      }
+//      requestPermissions(new String[] {PERMISSION_CAMERA, PERMISSION_STORAGE}, PERMISSIONS_REQUEST);
+//    }
+//  }
 
   // Returns true if the device supports the required hardware level, or better.
   private boolean isHardwareLevelSupported(
