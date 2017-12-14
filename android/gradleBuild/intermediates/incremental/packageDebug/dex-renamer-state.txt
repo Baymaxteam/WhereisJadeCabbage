@@ -1,7 +1,4 @@
-#Mon Oct 30 09:31:45 CST 2017
-base.0=/Users/sam/Desktop/android_tensorflow/tensorflow/tensorflow/examples/android/gradleBuild/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_3605ec130222febe88ce0fdebd02377b2d2f4f87
-renamed.1=classes.dex
-renamed.0=classes2.dex
-file.1=/Users/sam/Desktop/android_tensorflow/tensorflow/tensorflow/examples/android/gradleBuild/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_0d070efe80182ea0bd7e59bc03c72f482fdae9a3/classes.dex
-base.1=/Users/sam/Desktop/android_tensorflow/tensorflow/tensorflow/examples/android/gradleBuild/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_0d070efe80182ea0bd7e59bc03c72f482fdae9a3
-file.0=/Users/sam/Desktop/android_tensorflow/tensorflow/tensorflow/examples/android/gradleBuild/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_3605ec130222febe88ce0fdebd02377b2d2f4f87/classes.dex
+#Thu Dec 14 10:44:39 CST 2017
+base.0=/Users/sam/Desktop/Repositories/WhereisJadeCabbage/android/gradleBuild/intermediates/transforms/dex/debug/folders/1000/1f/main
+renamed.0=classes.dex
+file.0=/Users/sam/Desktop/Repositories/WhereisJadeCabbage/android/gradleBuild/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex

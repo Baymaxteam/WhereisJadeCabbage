@@ -8,7 +8,19 @@
         "source": "/Users/sam/Desktop/android_tensorflow/tensorflow/tensorflow/examples/android/res/drawable-hdpi/tile.9.png"
     },
     {
+        "merged": "/Users/sam/Desktop/Repositories/WhereisJadeCabbage/android/gradleBuild/intermediates/res/merged/debug/drawable-hdpi/ic_action_info.png",
+        "source": "/Users/sam/Desktop/Repositories/WhereisJadeCabbage/android/res/drawable-hdpi/ic_action_info.png"
+    },
+    {
         "merged": "/Users/sam/Desktop/android_tensorflow/tensorflow/tensorflow/examples/android/gradleBuild/intermediates/res/merged/debug/drawable-hdpi/ic_launcher.png",
         "source": "/Users/sam/Desktop/android_tensorflow/tensorflow/tensorflow/examples/android/res/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/sam/Desktop/Repositories/WhereisJadeCabbage/android/gradleBuild/intermediates/res/merged/debug/drawable-hdpi/tile.9.png",
+        "source": "/Users/sam/Desktop/Repositories/WhereisJadeCabbage/android/res/drawable-hdpi/tile.9.png"
+    },
+    {
+        "merged": "/Users/sam/Desktop/Repositories/WhereisJadeCabbage/android/gradleBuild/intermediates/res/merged/debug/drawable-hdpi/ic_launcher.png",
+        "source": "/Users/sam/Desktop/Repositories/WhereisJadeCabbage/android/res/drawable-hdpi/ic_launcher.png"
     }
 ]
