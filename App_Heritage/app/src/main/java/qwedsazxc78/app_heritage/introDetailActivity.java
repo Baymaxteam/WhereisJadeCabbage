@@ -3,9 +3,9 @@ package qwedsazxc78.app_heritage;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.support.v7.widget.Toolbar;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -30,8 +30,8 @@ public class introDetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        title        = this.getIntent().getExtras().getString("title");
-        image      = this.getIntent().getExtras().getInt("image");
+        title = this.getIntent().getExtras().getString("title");
+        image = this.getIntent().getExtras().getInt("image");
         Description = this.getIntent().getExtras().getString("description");
 
         // set select item name
@@ -39,10 +39,10 @@ public class introDetailActivity extends AppCompatActivity {
 
         // show the select item image and description by
         final List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
-            HashMap<String, String> hm = new HashMap<String, String>();
-            hm.put("introDetail_Description", Description);
-            hm.put("introDetail_image", Integer.toString(image));
-            aList.add(hm);
+        HashMap<String, String> hm = new HashMap<String, String>();
+        hm.put("introDetail_Description", Description);
+        hm.put("introDetail_image", Integer.toString(image));
+        aList.add(hm);
 
         String[] from = {"introDetail_image", "introDetail_Description"};
         int[] to = {R.id.introDetail_image, R.id.introDetail_Description};
@@ -56,22 +56,20 @@ public class introDetailActivity extends AppCompatActivity {
         TTSObj = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
-                if(status == TextToSpeech.SUCCESS) {
-                    if(TTSObj.isLanguageAvailable(Locale.CHINESE) == TextToSpeech.LANG_AVAILABLE) {
+                if (status == TextToSpeech.SUCCESS) {
+                    if (TTSObj.isLanguageAvailable(Locale.CHINESE) == TextToSpeech.LANG_AVAILABLE) {
                         TTSObj.setLanguage(Locale.CHINESE);
                         Toast.makeText(getApplicationContext(), "TTS chinese", Toast.LENGTH_LONG).show();
 
                         Log.v("[T]", "TTS chinese");
-                    }
-                    else if(TTSObj.isLanguageAvailable(Locale.US) == TextToSpeech.LANG_AVAILABLE) {
+                    } else if (TTSObj.isLanguageAvailable(Locale.US) == TextToSpeech.LANG_AVAILABLE) {
                         TTSObj.setLanguage(Locale.US);
                         Toast.makeText(getApplicationContext(), "TTS US", Toast.LENGTH_LONG).show();
-                        Log.v("[T]","TTS US");
-                    }
-                    else if(TTSObj.isLanguageAvailable(Locale.TRADITIONAL_CHINESE) == TextToSpeech.LANG_AVAILABLE) {
+                        Log.v("[T]", "TTS US");
+                    } else if (TTSObj.isLanguageAvailable(Locale.TRADITIONAL_CHINESE) == TextToSpeech.LANG_AVAILABLE) {
                         TTSObj.setLanguage(Locale.TRADITIONAL_CHINESE);
                         Toast.makeText(getApplicationContext(), "TTS TRADITIONAL_CHINESE", Toast.LENGTH_LONG).show();
-                        Log.v("[T]","TTS TRADITIONAL_CHINESE");
+                        Log.v("[T]", "TTS TRADITIONAL_CHINESE");
                     }
                 } else if (status == TextToSpeech.ERROR) {
                     Toast.makeText(getApplicationContext(), "TTS init fail", Toast.LENGTH_LONG).show();
@@ -82,15 +80,17 @@ public class introDetailActivity extends AppCompatActivity {
         });
     }
 
-    public void onPause(){
-        if(TTSObj !=null){
+    public void onPause() {
+        if (TTSObj != null) {
             TTSObj.stop();
             TTSObj.shutdown();
         }
         super.onPause();
     }
 
-    /** Called when the user touches the button */
+    /**
+     * Called when the user touches the button
+     */
     // start speech the introduction text
     public void speechMessage(View view) {
         // Toast.makeText(getApplicationContext(), "開啟語音導覽", Toast.LENGTH_LONG).show();

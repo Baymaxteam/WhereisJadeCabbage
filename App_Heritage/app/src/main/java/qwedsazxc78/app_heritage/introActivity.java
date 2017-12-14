@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,10 +38,10 @@ public class introActivity extends AppCompatActivity {
             "肉形石為國立故宮博物院最富人氣的文物之一,材質屬玉髓類的碧石。\n\n" +
                     "仔細端詳可見玉石形成過程中層次豐富的堆疊紋理,由底部天然的原石;至頂部的鑽孔、染色," +
                     "無不透露出自然與人工生動且巧妙的結合。\n\n" +
-            "在工匠的巧思下,冷硬的玉石化為軟嫩「東坡肉」的想像,蘇軾在黃州時曾寫過:「待他自熟莫催他,火候足時他自美。" +
+                    "在工匠的巧思下,冷硬的玉石化為軟嫩「東坡肉」的想像,蘇軾在黃州時曾寫過:「待他自熟莫催他,火候足時他自美。" +
                     "......飽得自家君莫管。」的豬肉頌。\n\n" +
                     "而宋人也有:「蒸處已將蕉葉裹,熟時兼用杏漿澆。紅鮮雅稱金盤飣,熟軟真堪玉箸挑。」形容豬肉烹調的詩句。\n\n" +
-            "「肉形石」除反映華夏「人與美石」的關係外,也充分展現飲食文化的特色," +
+                    "「肉形石」除反映華夏「人與美石」的關係外,也充分展現飲食文化的特色," +
                     "無怪乎蘇東坡曾讚嘆:「蓋聚物之夭美,以養吾之老饕。」\n\n",
 
             "毛公鼎是西周宣王年間所鑄造的青銅鼎,腹內刻有 500 字金文冊命書," +

@@ -14,22 +14,20 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.Size;
 import android.util.TypedValue;
 import android.view.Display;
-import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import org.tensorflow.demo.CameraActivity;
 import org.tensorflow.demo.Classifier;
@@ -46,44 +44,51 @@ import java.util.Vector;
 public class MainActivity extends CameraActivity
         implements NavigationView.OnNavigationItemSelectedListener, ImageReader.OnImageAvailableListener {
 
-    String TAG = "MainActivity";
-    // TensorFlow Section
-
-    private static final Logger LOGGER = new Logger();
-
     protected static final boolean SAVE_PREVIEW_BITMAP = false;
-
-    private ResultsView resultsView;
-
-    private Bitmap rgbFrameBitmap = null;
-    private Bitmap croppedBitmap = null;
-    private Bitmap cropCopyBitmap = null;
-
-    private long lastProcessingTimeMs;
-
+    // TensorFlow Section
+    private static final Logger LOGGER = new Logger();
     private static final int INPUT_SIZE = 128;
     private static final int IMAGE_MEAN = 128;
     private static final float IMAGE_STD = 128;
     private static final String INPUT_NAME = "input";
     private static final String OUTPUT_NAME = "final_result";
-
-
     private static final String MODEL_FILE = "file:///android_asset/output_graph.pb";
     private static final String LABEL_FILE =
             "file:///android_asset/output_labels.txt";
-
-
     private static final boolean MAINTAIN_ASPECT = true;
-
     private static final Size DESIRED_PREVIEW_SIZE = new Size(640, 480);
+    private static final float TEXT_SIZE_DIP = 10;
+    private static final int PERMISSIONS_REQUEST = 1;
+    private static final String PERMISSION_CAMERA = Manifest.permission.CAMERA;
+    private static final String PERMISSION_STORAGE = Manifest.permission.WRITE_EXTERNAL_STORAGE;
+    String TAG = "MainActivity";
+    // Array of strings for ListView Title
+    String[] listviewTitle = new String[]{
+            "翠玉白菜",
+    };
+    int[] listviewImage = new int[]{
+            R.drawable.jade_cabbage,
+    };
+    String[] listviewShortDescription = new String[]{
+            "翠玉屬輝玉類,產於雲南至緬甸的山區,其赭紅色者俗稱作「翡」,翠綠色者俗稱作「翠」。\n\n" +
+                    "此件「翠玉白菜」原陳設於永和宮,但種在一個海棠花形小琺瑯盆裡,其旁尚搭配紅色珊瑚靈芝。" +
+                    "其原為一塊半灰白半翠綠的輝玉,玉匠巧妙地利用玉質本來的顏色," +
+                    "雕成一顆筋脈分明、栩栩如生的白菜,其上則雕刻螽斯和蝗蟲。\n\n" +
+                    "螽斯也就是俗稱的「紡織娘」," +
+                    "紡織娘因為繁殖力很強,在古代是被當做多子多孫的吉祥象徵。\n\n" +
+                    "《詩經.周南》即言:「螽斯羽詵詵兮,宜爾子孫振振兮。」\n\n",
 
-
+    };
+    int detect_index = 0;
+    private ResultsView resultsView;
+    private Bitmap rgbFrameBitmap = null;
+    private Bitmap croppedBitmap = null;
+    private Bitmap cropCopyBitmap = null;
+    private long lastProcessingTimeMs;
     private Integer sensorOrientation;
     private Classifier classifier;
     private Matrix frameToCropTransform;
     private Matrix cropToFrameTransform;
-
-
     private BorderedText borderedText;
 
     @Override
@@ -209,43 +214,10 @@ public class MainActivity extends CameraActivity
         }
     }
 
-
-
     @Override
     protected Size getDesiredPreviewFrameSize() {
         return DESIRED_PREVIEW_SIZE;
     }
-
-    private static final float TEXT_SIZE_DIP = 10;
-
-
-
-    // Array of strings for ListView Title
-    String[] listviewTitle = new String[]{
-            "翠玉白菜",
-    };
-
-    int[] listviewImage = new int[]{
-            R.drawable.jade_cabbage,
-    };
-
-    String[] listviewShortDescription = new String[]{
-            "翠玉屬輝玉類,產於雲南至緬甸的山區,其赭紅色者俗稱作「翡」,翠綠色者俗稱作「翠」。\n\n" +
-                    "此件「翠玉白菜」原陳設於永和宮,但種在一個海棠花形小琺瑯盆裡,其旁尚搭配紅色珊瑚靈芝。" +
-                    "其原為一塊半灰白半翠綠的輝玉,玉匠巧妙地利用玉質本來的顏色," +
-                    "雕成一顆筋脈分明、栩栩如生的白菜,其上則雕刻螽斯和蝗蟲。\n\n" +
-                    "螽斯也就是俗稱的「紡織娘」," +
-                    "紡織娘因為繁殖力很強,在古代是被當做多子多孫的吉祥象徵。\n\n" +
-                    "《詩經.周南》即言:「螽斯羽詵詵兮,宜爾子孫振振兮。」\n\n",
-
-    };
-
-    int detect_index = 0;
-
-    private static final int PERMISSIONS_REQUEST = 1;
-
-    private static final String PERMISSION_CAMERA = Manifest.permission.CAMERA;
-    private static final String PERMISSION_STORAGE = Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
     private boolean hasPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -262,7 +234,7 @@ public class MainActivity extends CameraActivity
                     shouldShowRequestPermissionRationale(PERMISSION_STORAGE)) {
                 Log.w(TAG, "Camera AND storage permission are required for this demo");
             }
-            requestPermissions(new String[] {PERMISSION_CAMERA, PERMISSION_STORAGE}, PERMISSIONS_REQUEST);
+            requestPermissions(new String[]{PERMISSION_CAMERA, PERMISSION_STORAGE}, PERMISSIONS_REQUEST);
         }
     }
 
@@ -290,7 +262,6 @@ public class MainActivity extends CameraActivity
         setContentView(R.layout.activity_main);
 
         if (hasPermission()) {
-
             setFragment();
         } else {
             requestPermission();
@@ -308,7 +279,7 @@ public class MainActivity extends CameraActivity
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
-                Intent Intent_detect = new Intent( context_detect ,introDetailActivity.class);
+                Intent Intent_detect = new Intent(context_detect, introDetailActivity.class);
                 Intent_detect.putExtra("title", listviewTitle[detect_index]);
                 Intent_detect.putExtra("image", listviewImage[detect_index]);
                 Intent_detect.putExtra("description", listviewShortDescription[detect_index]);
@@ -354,7 +325,6 @@ public class MainActivity extends CameraActivity
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -367,7 +337,7 @@ public class MainActivity extends CameraActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-            Intent Intent_intro1 = new Intent(this , introActivity.class);
+            Intent Intent_intro1 = new Intent(this, introActivity.class);
             startActivity(Intent_intro1);
         }
 
