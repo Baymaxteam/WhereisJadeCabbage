@@ -12,6 +12,8 @@ import android.graphics.Typeface;
 import android.media.ImageReader;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.SystemClock;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -28,6 +30,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import org.tensorflow.demo.CameraActivity;
 import org.tensorflow.demo.Classifier;
@@ -62,6 +65,7 @@ public class MainActivity extends CameraActivity
     private static final String PERMISSION_CAMERA = Manifest.permission.CAMERA;
     private static final String PERMISSION_STORAGE = Manifest.permission.WRITE_EXTERNAL_STORAGE;
     String TAG = "MainActivity";
+
     // Array of strings for ListView Title
     String[] listviewTitle = new String[]{
             "翠玉白菜",
@@ -80,7 +84,8 @@ public class MainActivity extends CameraActivity
 
     };
     int detect_index = 0;
-    private ResultsView resultsView;
+    private TextView resultsView;
+    private FloatingActionButton fab;
     private Bitmap rgbFrameBitmap = null;
     private Bitmap croppedBitmap = null;
     private Bitmap cropCopyBitmap = null;
@@ -146,8 +151,10 @@ public class MainActivity extends CameraActivity
                 });
     }
 
+
     @Override
     protected void processImage() {
+
         rgbFrameBitmap.setPixels(getRgbBytes(), 0, previewWidth, 0, 0, previewWidth, previewHeight);
         final Canvas canvas = new Canvas(croppedBitmap);
         canvas.drawBitmap(rgbFrameBitmap, frameToCropTransform, null);
@@ -156,6 +163,7 @@ public class MainActivity extends CameraActivity
         if (SAVE_PREVIEW_BITMAP) {
             ImageUtils.saveBitmap(croppedBitmap);
         }
+
         runInBackground(
                 new Runnable() {
                     @Override
@@ -164,16 +172,27 @@ public class MainActivity extends CameraActivity
                         final List<Classifier.Recognition> results = classifier.recognizeImage(croppedBitmap);
                         lastProcessingTimeMs = SystemClock.uptimeMillis() - startTime;
                         LOGGER.i("Detect: %s", results);
+
                         cropCopyBitmap = Bitmap.createBitmap(croppedBitmap);
-                        // TODO:這裡輸出辨識結果
-//            if (resultsView == null) {
-//              resultsView = (ResultsView) findViewById(R.id.results);
-//            }
-//            resultsView.setResults(results);
+                        MainActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                resultsView.setText(results.get(0).toString());
+                                if(results.get(0).getTitle().equals("jadeitecabbage") && results.get(0).getConfidence() > 0.8){
+                                    fab.show();
+                                }
+                                else{
+                                    fab.hide();
+
+                                }
+                            }
+                        });
                         requestRender();
                         readyForNextImage();
                     }
                 });
+
+
     }
 
     @Override
@@ -271,7 +290,10 @@ public class MainActivity extends CameraActivity
         setSupportActionBar(toolbar);
         setTitle("文物辨識");
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        resultsView = (TextView) findViewById(R.id.textView);
+
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.hide();
         final Context context_detect = this;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

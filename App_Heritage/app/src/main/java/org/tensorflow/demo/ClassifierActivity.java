@@ -27,6 +27,8 @@ import android.os.SystemClock;
 import android.util.Size;
 import android.util.TypedValue;
 import android.view.Display;
+import android.widget.TextView;
+
 import java.util.List;
 import java.util.Vector;
 import org.tensorflow.demo.OverlayView.DrawCallback;
@@ -41,7 +43,7 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
 
   protected static final boolean SAVE_PREVIEW_BITMAP = false;
 
-  private ResultsView resultsView;
+  private TextView resultsView;
 
   private Bitmap rgbFrameBitmap = null;
   private Bitmap croppedBitmap = null;
@@ -176,7 +178,14 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
 //            if (resultsView == null) {
 //              resultsView = (ResultsView) findViewById(R.id.results);
 //            }
-//            resultsView.setResults(results);
+//
+            runOnUiThread(new Runnable() {
+              @Override
+              public void run() {
+                resultsView = (TextView) findViewById(R.id.textView);
+                resultsView.setText("text");
+              }
+            });
             requestRender();
             readyForNextImage();
           }
